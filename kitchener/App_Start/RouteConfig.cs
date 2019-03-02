@@ -13,16 +13,12 @@ namespace kitchener
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                name: "Index",
-                url: "{controller}/{action}/",
-                defaults: new { controller = "Home", action = "Index", format = UrlParameter.Optional }
-            );
+
 
             routes.MapRoute(
                 name: "Add Inventory Stock",
-                url: "inventory/addstock/",
-                defaults: new { controller = "Home", action = "FullInv", format = UrlParameter.Optional }
+                url: "inventory/addstock/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
@@ -59,6 +55,12 @@ namespace kitchener
                 name: "View/Audit Full Inventory",
                 url: "inventory/full/",
                 defaults: new { controller = "Home", action = "FullInv", format = UrlParameter.Optional }
+            );
+
+           routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
