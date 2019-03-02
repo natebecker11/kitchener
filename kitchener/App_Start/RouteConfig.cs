@@ -14,6 +14,12 @@ namespace kitchener
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Index",
+                url: "{controller}/{action}/",
+                defaults: new { controller = "Home", action = "Index", format = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Add Inventory Stock",
                 url: "inventory/addstock/",
                 defaults: new { controller = "Home", action = "FullInv", format = UrlParameter.Optional }
